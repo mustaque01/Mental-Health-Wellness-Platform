@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { User, Mail, Phone, MapPin, Calendar, Edit, Save, X } from 'lucide-react';
+import { Mail, Phone, MapPin, Calendar, Edit, Save, X } from 'lucide-react';
 import { useAuthStore } from '../stores/authStore';
 
 const Profile = () => {
@@ -67,7 +67,10 @@ const Profile = () => {
                     className="object-cover w-24 h-24 mx-auto mb-4 rounded-full"
                   />
                   {isEditing && (
-                    <button className="absolute bottom-0 right-0 p-2 text-white transition-colors bg-blue-500 rounded-full hover:bg-blue-600">
+                    <button 
+                      aria-label="Edit profile picture"
+                      className="absolute bottom-0 right-0 p-2 text-white transition-colors bg-blue-500 rounded-full hover:bg-blue-600"
+                    >
                       <Edit className="w-4 h-4" />
                     </button>
                   )}
@@ -123,6 +126,7 @@ const Profile = () => {
                 {isEditing && (
                   <button
                     onClick={() => setIsEditing(false)}
+                    aria-label="Cancel editing"
                     className="text-gray-500 hover:text-gray-700"
                   >
                     <X className="w-5 h-5" />
@@ -132,10 +136,11 @@ const Profile = () => {
 
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div>
-                  <label className="block mb-2 text-sm font-medium text-gray-700">
+                  <label htmlFor="name-input" className="block mb-2 text-sm font-medium text-gray-700">
                     Full Name
                   </label>
                   <input
+                    id="name-input"
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -145,10 +150,11 @@ const Profile = () => {
                 </div>
 
                 <div>
-                  <label className="block mb-2 text-sm font-medium text-gray-700">
+                  <label htmlFor="email-input" className="block mb-2 text-sm font-medium text-gray-700">
                     Email Address
                   </label>
                   <input
+                    id="email-input"
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -158,10 +164,11 @@ const Profile = () => {
                 </div>
 
                 <div>
-                  <label className="block mb-2 text-sm font-medium text-gray-700">
+                  <label htmlFor="phone-input" className="block mb-2 text-sm font-medium text-gray-700">
                     Phone Number
                   </label>
                   <input
+                    id="phone-input"
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -171,10 +178,11 @@ const Profile = () => {
                 </div>
 
                 <div>
-                  <label className="block mb-2 text-sm font-medium text-gray-700">
+                  <label htmlFor="location-input" className="block mb-2 text-sm font-medium text-gray-700">
                     Location
                   </label>
                   <input
+                    id="location-input"
                     type="text"
                     value={formData.location}
                     onChange={(e) => setFormData({ ...formData, location: e.target.value })}
@@ -184,10 +192,11 @@ const Profile = () => {
                 </div>
 
                 <div>
-                  <label className="block mb-2 text-sm font-medium text-gray-700">
+                  <label htmlFor="birthdate-input" className="block mb-2 text-sm font-medium text-gray-700">
                     Birth Date
                   </label>
                   <input
+                    id="birthdate-input"
                     type="date"
                     value={formData.birthDate}
                     onChange={(e) => setFormData({ ...formData, birthDate: e.target.value })}
@@ -197,10 +206,11 @@ const Profile = () => {
                 </div>
 
                 <div>
-                  <label className="block mb-2 text-sm font-medium text-gray-700">
+                  <label htmlFor="emergency-contact-input" className="block mb-2 text-sm font-medium text-gray-700">
                     Emergency Contact
                   </label>
                   <input
+                    id="emergency-contact-input"
                     type="text"
                     value={formData.emergencyContact}
                     onChange={(e) => setFormData({ ...formData, emergencyContact: e.target.value })}
@@ -211,10 +221,11 @@ const Profile = () => {
               </div>
 
               <div className="mt-6">
-                <label className="block mb-2 text-sm font-medium text-gray-700">
+                <label htmlFor="bio-textarea" className="block mb-2 text-sm font-medium text-gray-700">
                   Bio
                 </label>
                 <textarea
+                  id="bio-textarea"
                   value={formData.bio}
                   onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
                   disabled={!isEditing}
@@ -256,11 +267,12 @@ const Profile = () => {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <h4 className="font-medium text-gray-900">Data Sharing</h4>
+                    <h4 className="font-medium text-gray-900" id="data-sharing-label">Data Sharing</h4>
                     <p className="text-sm text-gray-600">Share anonymized data for research purposes</p>
                   </div>
                   <input
                     type="checkbox"
+                    aria-labelledby="data-sharing-label"
                     className="text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                   />
                 </div>
