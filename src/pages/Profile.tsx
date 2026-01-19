@@ -29,28 +29,28 @@ const Profile = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen p-4 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 sm:p-6 lg:p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex justify-between items-center mb-8"
+          className="flex items-center justify-between mb-8"
         >
           <div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Profile</h1>
+            <h1 className="mb-2 text-3xl font-bold text-gray-900 sm:text-4xl">Profile</h1>
             <p className="text-gray-600">Manage your account and preferences</p>
           </div>
           <button
             onClick={() => isEditing ? handleSave() : setIsEditing(true)}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 flex items-center space-x-2"
+            className="flex items-center px-6 py-3 space-x-2 font-semibold text-white transition-all duration-200 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
           >
             {isEditing ? <Save className="w-5 h-5" /> : <Edit className="w-5 h-5" />}
             <span>{isEditing ? 'Save Changes' : 'Edit Profile'}</span>
           </button>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Profile Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -58,16 +58,16 @@ const Profile = () => {
             transition={{ delay: 0.1 }}
             className="lg:col-span-1"
           >
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg">
-              <div className="text-center mb-6">
+            <div className="p-6 shadow-lg bg-white/80 backdrop-blur-sm rounded-xl">
+              <div className="mb-6 text-center">
                 <div className="relative inline-block">
                   <img
                     src={user?.avatar}
                     alt={user?.name}
-                    className="w-24 h-24 rounded-full object-cover mx-auto mb-4"
+                    className="object-cover w-24 h-24 mx-auto mb-4 rounded-full"
                   />
                   {isEditing && (
-                    <button className="absolute bottom-0 right-0 bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 transition-colors">
+                    <button className="absolute bottom-0 right-0 p-2 text-white transition-colors bg-blue-500 rounded-full hover:bg-blue-600">
                       <Edit className="w-4 h-4" />
                     </button>
                   )}
@@ -97,8 +97,8 @@ const Profile = () => {
             </div>
 
             {/* Stats */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg mt-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Your Progress</h3>
+            <div className="p-6 mt-6 shadow-lg bg-white/80 backdrop-blur-sm rounded-xl">
+              <h3 className="mb-4 text-lg font-semibold text-gray-900">Your Progress</h3>
               <div className="grid grid-cols-2 gap-4">
                 {stats.map((stat, index) => (
                   <div key={index} className="text-center">
@@ -117,8 +117,8 @@ const Profile = () => {
             transition={{ delay: 0.2 }}
             className="lg:col-span-2"
           >
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg">
-              <div className="flex justify-between items-center mb-6">
+            <div className="p-6 shadow-lg bg-white/80 backdrop-blur-sm rounded-xl">
+              <div className="flex items-center justify-between mb-6">
                 <h3 className="text-xl font-semibold text-gray-900">Personal Information</h3>
                 {isEditing && (
                   <button
@@ -130,9 +130,9 @@ const Profile = () => {
                 )}
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block mb-2 text-sm font-medium text-gray-700">
                     Full Name
                   </label>
                   <input
@@ -145,7 +145,7 @@ const Profile = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block mb-2 text-sm font-medium text-gray-700">
                     Email Address
                   </label>
                   <input
@@ -158,7 +158,7 @@ const Profile = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block mb-2 text-sm font-medium text-gray-700">
                     Phone Number
                   </label>
                   <input
@@ -171,7 +171,7 @@ const Profile = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block mb-2 text-sm font-medium text-gray-700">
                     Location
                   </label>
                   <input
@@ -184,7 +184,7 @@ const Profile = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block mb-2 text-sm font-medium text-gray-700">
                     Birth Date
                   </label>
                   <input
@@ -197,7 +197,7 @@ const Profile = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block mb-2 text-sm font-medium text-gray-700">
                     Emergency Contact
                   </label>
                   <input
@@ -211,7 +211,7 @@ const Profile = () => {
               </div>
 
               <div className="mt-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block mb-2 text-sm font-medium text-gray-700">
                   Bio
                 </label>
                 <textarea
@@ -225,30 +225,32 @@ const Profile = () => {
             </div>
 
             {/* Privacy Settings */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg mt-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">Privacy & Notifications</h3>
+            <div className="p-6 mt-6 shadow-lg bg-white/80 backdrop-blur-sm rounded-xl">
+              <h3 className="mb-6 text-xl font-semibold text-gray-900">Privacy & Notifications</h3>
               
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h4 className="font-medium text-gray-900">Email Notifications</h4>
+                    <h4 className="font-medium text-gray-900" id="email-notifications-label">Email Notifications</h4>
                     <p className="text-sm text-gray-600">Receive updates about your wellness journey</p>
                   </div>
                   <input
                     type="checkbox"
                     defaultChecked
-                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                    aria-labelledby="email-notifications-label"
                   />
                 </div>
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <h4 className="font-medium text-gray-900">Anonymous Community Posts</h4>
+                    <h4 className="font-medium text-gray-900" id="anonymous-posts-label">Anonymous Community Posts</h4>
                     <p className="text-sm text-gray-600">Post anonymously by default in community</p>
                   </div>
                   <input
                     type="checkbox"
-                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                    aria-labelledby="anonymous-posts-label"
                   />
                 </div>
 
@@ -259,21 +261,21 @@ const Profile = () => {
                   </div>
                   <input
                     type="checkbox"
-                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                   />
                 </div>
               </div>
             </div>
 
             {/* Danger Zone */}
-            <div className="bg-red-50 border border-red-200 rounded-xl p-6 mt-6">
-              <h3 className="text-lg font-semibold text-red-900 mb-4">Danger Zone</h3>
+            <div className="p-6 mt-6 border border-red-200 bg-red-50 rounded-xl">
+              <h3 className="mb-4 text-lg font-semibold text-red-900">Danger Zone</h3>
               <div className="space-y-3">
-                <button className="text-red-600 hover:text-red-700 font-medium text-sm">
+                <button className="text-sm font-medium text-red-600 hover:text-red-700">
                   Export My Data
                 </button>
                 <br />
-                <button className="text-red-600 hover:text-red-700 font-medium text-sm">
+                <button className="text-sm font-medium text-red-600 hover:text-red-700">
                   Delete Account
                 </button>
               </div>
